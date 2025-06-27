@@ -1,5 +1,6 @@
 package br.com.cesarcastro.httpclient;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,7 @@ import org.springframework.context.ApplicationContext;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class HttpClientTest {
+class HttpClientTest {
     private static final Logger log = LoggerFactory.getLogger(HttpClientTest.class);
     private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
             .withConfiguration(AutoConfigurations.of(
@@ -25,6 +26,7 @@ public class HttpClientTest {
     }
 
     @Test
+    @DisplayName("Verifica os benas do contexto")
     void shouldContainBeans() {
         runWithContext(context -> {
             log.info("Beans: {}", context.getBeanDefinitionNames());
@@ -35,6 +37,7 @@ public class HttpClientTest {
     }
 
     @Test
+    @DisplayName("Verifica as propriedades do HttpClient")
     void shouldContainHttpClientProperties() {
         runWithContext(context -> {
             HttpClientProperties properties = context.getBean(HttpClientProperties.class);
@@ -45,8 +48,9 @@ public class HttpClientTest {
     }
 
     @Test
+    @DisplayName("Verifica o HttpClient sem SSLContext")
     void shouldHttpClientWithoutSSLContext() {
-        runWithContext((context) -> {
+        runWithContext(context -> {
             HttpClient httpClient = context.getBean(HttpClient.class);
             String response = httpClient.get("https://jsonplaceholder.typicode.com/todos", null, null);
             assertNotNull(response);
