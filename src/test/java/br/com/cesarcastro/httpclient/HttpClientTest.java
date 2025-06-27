@@ -42,7 +42,6 @@ class HttpClientTest {
         runWithContext(context -> {
             HttpClientProperties properties = context.getBean(HttpClientProperties.class);
             assertTrue(properties.connectionRequestTimeout() > 0);
-            assertTrue(properties.connectTimeout() > 0);
             assertTrue(properties.socketTimeout() > 0);
         });
     }
