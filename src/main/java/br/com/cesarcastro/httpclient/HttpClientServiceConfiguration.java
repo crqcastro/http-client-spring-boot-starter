@@ -33,7 +33,6 @@ public class HttpClientServiceConfiguration {
     public RestTemplate restTemplate() {
         RequestConfig config = RequestConfig.custom()
                 .setConnectionRequestTimeout(Timeout.ofMilliseconds(httpClientProperties.connectionRequestTimeout()))
-                .setConnectTimeout(Timeout.ofMilliseconds(httpClientProperties.connectTimeout()))
                 .setResponseTimeout(Timeout.ofMilliseconds(httpClientProperties.socketTimeout()))
                 .build();
 
