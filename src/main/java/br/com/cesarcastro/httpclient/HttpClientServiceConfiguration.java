@@ -6,8 +6,6 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.core5.util.Timeout;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -24,7 +22,6 @@ import java.util.List;
 @EnableConfigurationProperties(HttpClientProperties.class)
 @RequiredArgsConstructor
 public class HttpClientServiceConfiguration {
-    private static final Logger log = LoggerFactory.getLogger(HttpClientServiceConfiguration.class);
     private final HttpClientProperties httpClientProperties;
     private final List<RestTemplateCustomizer> customizers;
 
